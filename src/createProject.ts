@@ -62,15 +62,9 @@ async function createProject(project: IProjectProps) {
   -> ${chalk.cyan('prettier')}
   -> ${chalk.cyan('jest')}
 `);
-  if (project.git) {
-    await gitAddAll();
-    await gitCommit('chore', 'install react, next and styled-components');
-  }
-  await installDependencies(devDependencies, project.packageManager, isOnline, true);
   await copyTemplate(root);
+  await installDependencies(devDependencies, project.packageManager, isOnline, true);
   if (project.git) {
-    await gitAddAll();
-    await gitCommit('chore', 'install typescript, eslint, prettier and jest');
     console.log();
     console.log(`Installing CI tools (using ${chalk.green(project.packageManager)}):\n 
       -> ${chalk.cyan('husky')}
@@ -79,8 +73,6 @@ async function createProject(project: IProjectProps) {
       -> ${chalk.cyan('commitizen')}
     `);
     await installDependencies(ciDependencies, project.packageManager, isOnline, true);
-    await gitAddAll();
-    await gitCommit('chore', 'install husky, lint-staged, commitlint and commitizen');
   }
 
   console.log(`

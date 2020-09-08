@@ -33,7 +33,7 @@ const devDependencies = [
 ];
 
 const ciDependencies = [
-  'husky@^3.1.0',
+  'husky',
   'lint-staged',
   '@commitlint/cli',
   '@commitlint/config-conventional',

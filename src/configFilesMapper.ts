@@ -6,11 +6,13 @@ const configFilesMapper: { [key: string]: string; } = {
   nextconfig: 'next.config.js',
   nextenv: 'next-env.d.ts',
   jestconfig: 'jest.config.js',
+  setuptests: 'setupTests.js',
   eslintrc: '.eslintrc.json',
   eslintignore: '.eslintignore',
   editorconfig: '.editorconfig',
   commitlintconfig: 'commitlint.config.js',
-  babelrc: '.babelrc'
+  babelrc: '.babelrc',
+  github: '.github'
 };
 
 export default configFilesMapper;

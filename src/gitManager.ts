@@ -46,7 +46,7 @@ function gitCommit(type: string, message: string) {
   return new Promise(
     (resolve, reject) => {
       const command = 'git';
-      const args = ['commit', '-m', `${type}: ${message}`];
+      const args = ['commit', '-m', `${type}: ${message}`, '-n'];
       const child = spawn(command, args, { stdio: 'inherit' });
       child.on('close', (code) => {
         if (code !== 0) {
