@@ -1,6 +1,6 @@
 {
   "name": "create-synxty-app",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "author": "Synxty",
   "license": "MIT",
   "description": "Create a Synxty App",
@@ -9,9 +9,10 @@
     "url": "https://github.com/synxty/create-synxty-app.git"
   },
   "scripts": {
-    "dev": "tsc -w",
-    "build": "tsc",
-    "test": "node dist"
+    "dev": "ncc build src/index.ts -o -w ./dist/",
+    "prerelease": "rm -rf ./dist/",
+    "release": "ncc build src/index.ts -o ./dist/ -m -C --no-source-map-register",
+    "prepare": "yarn release"
   },
   "bin": {
     "create-synxty-app": "./dist/index.js"

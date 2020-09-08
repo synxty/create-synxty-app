@@ -6,7 +6,7 @@ import fs from 'fs';
 async function copyTemplate(root: string) {
   await cpy('**', root, {
     parents: true,
-    cwd: path.join(__dirname, '..', 'template', 'default'),
+    cwd: path.join(__dirname, 'template', 'default'),
     rename: (name) => configFilesMapper[name] || name
   });
   fs.renameSync('github', '.github');

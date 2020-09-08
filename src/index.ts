@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import Yargs from 'yargs';
 import validateProjectName from './validateProjectName';
 import chalk from 'chalk';
