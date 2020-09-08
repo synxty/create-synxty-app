@@ -1,10 +1,15 @@
 const configFilesMapper: { [key: string]: string; } = {
   gitignore: '.gitignore',
-  'README-template.md': 'README.md',
-  eslintrc: '.eslintrc.json',
+  tsconfig: 'tsconfig.json',
+  readme: 'README.md',
   prettierrc: '.prettierrc',
+  nextconfig: 'next.config.js',
+  nextenv: 'next-env.d.ts',
+  jestconfig: 'jest.config.js',
+  eslintrc: '.eslintrc.json',
   eslintignore: '.eslintignore',
   editorconfig: '.editorconfig',
+  commitlintconfig: 'commitlint.config.js',
   babelrc: '.babelrc'
 };
 

@@ -7,7 +7,7 @@ import chalk from 'chalk';
 import writePackageFile from './writePackageFile';
 import { isInGitRepository, isInMercurialRepository, initializeRepository, gitConfig, gitCommit, gitAddAll } from './gitManager';
 import installDependencies from './installDependencies';
-import { dependencies } from './dependencies';
+import { dependencies, devDependencies, ciDependencies } from './dependencies';
 import copyTemplate from './copyTemplate';
 
 
@@ -47,21 +47,56 @@ async function createProject(project: IProjectProps) {
       `);
   }
 
-  console.log(`Installing (using ${chalk.green(project.packageManager)}):\n 
+  console.log(`Installing dependencies (using ${chalk.green(project.packageManager)}):\n 
   -> ${chalk.cyan('react')} 
   -> ${chalk.cyan('react-dom')}
   -> ${chalk.cyan('next')}
   -> ${chalk.cyan('styled-components')}
 `);
 
-  //await installDependencies(dependencies, project.packageManager, isOnline);
-
-  await copyTemplate(root);
-
+  await installDependencies(dependencies, project.packageManager, isOnline);
+  console.log();
+  console.log(`Installing development dependencies (using ${chalk.green(project.packageManager)}):\n 
+  -> ${chalk.cyan('typescript')} 
+  -> ${chalk.cyan('eslint')}
+  -> ${chalk.cyan('prettier')}
+  -> ${chalk.cyan('jest')}
+`);
   if (project.git) {
     await gitAddAll();
     await gitCommit('chore', 'install react, next and styled-components');
   }
+  await installDependencies(devDependencies, project.packageManager, isOnline, true);
+  await copyTemplate(root);
+  if (project.git) {
+    await gitAddAll();
+    await gitCommit('chore', 'install typescript, eslint, prettier and jest');
+    console.log();
+    console.log(`Installing CI tools (using ${chalk.green(project.packageManager)}):\n 
+      -> ${chalk.cyan('husky')}
+      -> ${chalk.cyan('lint-staged')}
+      -> ${chalk.cyan('commitlint')}
+      -> ${chalk.cyan('commitizen')}
+    `);
+    await installDependencies(ciDependencies, project.packageManager, isOnline, true);
+    await gitAddAll();
+    await gitCommit('chore', 'install husky, lint-staged, commitlint and commitizen');
+  }
+
+  console.log(`
+  ${chalk.greenBright.underline.bold('Success!')}\n
+  Your app ${chalk.yellow(project.name)} was created at ${project.path}/
+  Inside that directory you can run several commands:\n
+  -> To start the development server run:
+  ${chalk.cyan(`  ${project.packageManager} ${project.packageManager === 'yarn' ? '' : 'run '}dev`)}\n
+  -> To build your app for production run:
+  ${chalk.cyan(`  ${project.packageManager} ${project.packageManager === 'yarn' ? '' : 'run '}build`)}\n
+  -> To run your built app in production run:
+  ${chalk.cyan(`  ${project.packageManager} start`)}\n
+  Jump in and start coding:
+    ${chalk.cyan(`cd ${path.join(originalDirectory, project.name) === project.path ? project.name : project.path}`)}\n
+  Have fun!
+`);
 }
 
 export default createProject;
