@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "moduleResolution": "Node",
-    "strict": true,
-    "resolveJsonModule": true,
+    "module": "CommonJS",
+    "outDir": "./dist/",
     "esModuleInterop": true,
-    "skipLibCheck": false,
-    "outDir": "./dist/"
-  }
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
