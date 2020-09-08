@@ -6,6 +6,8 @@ import isUserOnline from './isUserOnline';
 import chalk from 'chalk';
 import writePackageFile from './writePackageFile';
 import { isInGitRepository, isInMercurialRepository, initializeRepository, gitConfig } from './gitManager';
+import installDependencies from './installDependencies';
+import { dependencies } from './dependencies';
 
 
 export interface IProjectProps {
@@ -50,6 +52,8 @@ async function createProject(project: IProjectProps) {
   -> ${chalk.cyan('next')}
   -> ${chalk.cyan('styled-components')}
 `);
+
+  await installDependencies(dependencies, project.packageManager, isOnline);
 }
 
 export default createProject;

@@ -14,10 +14,12 @@
     "dist"
   ],
   "devDependencies": {
+    "@types/cross-spawn": "^6.0.2",
     "@types/node": "^14.6.4",
     "@types/validate-npm-package-name": "^3.0.0",
     "@types/yargs": "^15.0.5",
     "chalk": "^4.1.0",
+    "cross-spawn": "^7.0.3",
     "typescript": "^4.0.2",
     "validate-npm-package-name": "^3.0.0",
     "yargs": "^15.4.1"
