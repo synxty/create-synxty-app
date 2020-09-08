@@ -5,9 +5,10 @@ import isDirectoryEmpty from './isDirectoryEmpty';
 import isUserOnline from './isUserOnline';
 import chalk from 'chalk';
 import writePackageFile from './writePackageFile';
-import { isInGitRepository, isInMercurialRepository, initializeRepository, gitConfig } from './gitManager';
+import { isInGitRepository, isInMercurialRepository, initializeRepository, gitConfig, gitCommit, gitAddAll } from './gitManager';
 import installDependencies from './installDependencies';
 import { dependencies } from './dependencies';
+import copyTemplate from './copyTemplate';
 
 
 export interface IProjectProps {
@@ -54,6 +55,13 @@ async function createProject(project: IProjectProps) {
 `);
 
   await installDependencies(dependencies, project.packageManager, isOnline);
+
+  await copyTemplate(root);
+
+  if (project.git) {
+    await gitAddAll();
+    await gitCommit('chore', 'install react, next and styled-components');
+  }
 }
 
 export default createProject;

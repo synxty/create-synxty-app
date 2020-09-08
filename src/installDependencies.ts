@@ -23,7 +23,7 @@ function installDependencies(
       if (packageManager === 'npm') args = ['i', ...dependencies];
       args.push('-E');
       if (dev) args.push('-D');
-      const child = spawn(command, args, { stdio: 'inherit', env: { ...process.env, ADBLOCK: '1', DISABLE_OPENCOLLECTIVE: '1' } });
+      const child = spawn(command, args, { stdio: 'inherit' });
 
       child.on('close', (code) => {
         if (code !== 0) {

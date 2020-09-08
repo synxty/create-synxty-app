@@ -1,5 +1,6 @@
 import { execSync } from 'child_process';
 import chalk from 'chalk';
+import spawn from 'cross-spawn';
 
 function isGitInstalled(): boolean {
   try {
@@ -41,4 +42,38 @@ function gitConfig() {
   };
 }
 
-export { isGitInstalled, initializeRepository, isInGitRepository, isInMercurialRepository, gitConfig };
+function gitCommit(type: string, message: string) {
+  return new Promise(
+    (resolve, reject) => {
+      const command = 'git';
+      const args = ['commit', '-m', `${type}: ${message}`];
+      const child = spawn(command, args, { stdio: 'inherit' });
+      child.on('close', (code) => {
+        if (code !== 0) {
+          reject({ command: `${command} ${args.join(' ')}` });
+          return;
+        }
+        resolve();
+      });
+    }
+  );
+}
+
+function gitAddAll() {
+  return new Promise(
+    (resolve, reject) => {
+      const command = 'git';
+      const args = ['add', '-A'];
+      const child = spawn(command, args, { stdio: 'inherit' });
+      child.on('close', (code) => {
+        if (code !== 0) {
+          reject({ command: `${command} ${args.join(' ')}` });
+          return;
+        }
+        resolve();
+      });
+    }
+  );
+}
+
+export { isGitInstalled, initializeRepository, isInGitRepository, isInMercurialRepository, gitConfig, gitCommit, gitAddAll };

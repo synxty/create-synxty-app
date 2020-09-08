@@ -41,12 +41,12 @@ function isDirectoryEmpty(root: string, directoryName: string): boolean {
       try {
         const status = fs.lstatSync(path.join(root, file));
         if (status.isDirectory()) {
-          console.log(`   - ${chalk.bold.blue(file)}/\n`);
+          console.log(` - ${chalk.bold.blue(file)}/`);
         } else {
-          console.log(`   - ${chalk.bold(file)}\n`);
+          console.log(` - ${chalk.bold(file)}`);
         }
       } catch {
-        console.log(`   - ${file}\n`);
+        console.log(` - ${file}`);
       }
     }
     console.log(
