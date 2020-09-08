@@ -3,11 +3,17 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
-  "devDependencies": {
-    "typescript": "^4.0.2"
-  },
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc"
+  },
+  "bin": {
+    "create-synxty-app": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^4.0.2"
   }
 }
