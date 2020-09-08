@@ -35,21 +35,18 @@ function isDirectoryEmpty(root: string, directoryName: string): boolean {
 
   if (conflicts.length > 0) {
 
-    console.log(`
-      The directory ${chalk.yellow(directoryName)} 
-      contains files that could conflict with the installation:\n
-    `);
+    console.log(`The directory ${chalk.yellow(directoryName)} contains files that could conflict with the installation:`);
 
     for (const file of conflicts) {
       try {
         const status = fs.lstatSync(path.join(root, file));
         if (status.isDirectory()) {
-          console.log(`  ${chalk.blue(file)}/\n`);
+          console.log(`   - ${chalk.bold.blue(file)}/\n`);
         } else {
-          console.log(`  ${file}\n`);
+          console.log(`   - ${chalk.bold(file)}\n`);
         }
       } catch {
-        console.log(`  ${file}\n`);
+        console.log(`   - ${file}\n`);
       }
     }
     console.log(

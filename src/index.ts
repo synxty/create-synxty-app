@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import path from 'path';
 import determinePackageManagerUsed from './determinePackageManagerUsed';
 import createProject, { IProjectProps } from './createProject';
+import { isGitInstalled } from './gitManager';
 
 const { _: projectArgs } = Yargs.check((argv) => {
   if (argv._.length > 1) {
@@ -27,7 +28,8 @@ async function run() {
   const projectProps: IProjectProps = {
     name: projectName.value,
     path: path.resolve(projectName.value),
-    packageManager: determinePackageManagerUsed()
+    packageManager: determinePackageManagerUsed(),
+    git: isGitInstalled()
   };
   await createProject(projectProps);
 }
