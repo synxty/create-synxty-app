@@ -11,8 +11,7 @@ const configFilesMapper: { [key: string]: string; } = {
   eslintignore: '.eslintignore',
   editorconfig: '.editorconfig',
   commitlintconfig: 'commitlint.config.js',
-  babelrc: '.babelrc',
-  github: '.github'
+  babelrc: '.babelrc'
 };
 
 export default configFilesMapper;

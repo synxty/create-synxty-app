@@ -1,58 +1,54 @@
 <!-- omit in toc -->
-# Synxty CRA Template
+# Create a Synxty App
 
 <img src="https://raw.githubusercontent.com/synxty/cra-template-synxty/master/.github/assets/banner.png" />
 
 <!-- omit in toc -->
-## Featuring husky, commitlint, commitizen, lint-staged with Airbnb code style, styled-components and react-router-dom
-
-**Important Note:** In order for this template to work properly with npm (npx) you must have a git repository already created. Otherwise the installation will get stuck trying to make the initial "create-react-app" commit which does not respect the conventional changelog. If you're reading this note too late, don't worry just cancel out of the installation and initialize a git repository with `git init` within your project folder.
+## Start your projects like a pro
 
 <!-- omit in toc -->
 ### Table of Contents
 
-- [📃 Description](#-description)
+- [📃 Why?](#-why)
 - [🎨 Creating a Project](#-creating-a-project)
-- [📁 File Structure](#-file-structure)
+- [📁 Folder Structure](#-folder-structure)
 - [▶️ Available Scripts Within the Created Project](#️-available-scripts-within-the-created-project)
 - [🧠 Learn More](#-learn-more)
-- [⚠ Notes](#-notes)
 - [⚖️ License](#️-license)
 
-## 📃 Description
+## 📃 Why?
 
-This template is going to create a project bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and adds the following packages to the default typescript template:
+<!-- omit in toc -->
+### Well...
+✅ TypeScript is default  
+✅ Next.js because SEO is essential and SSR is included  
+✅ styled-components, write CSS with JS? Thanks  
+✅ Jest, the only library you need to test your app behavior  
+✅ Your code will always be beautiful with Prettier  
+✅ ESLint to keep a code pattern between the team  
+✅ lint-staged to assure that every code gets linted when committed  
+✅ Your commits will be meaningful with commitizen and commitlint  
+✅ A complete README file, every project deserves one
 
-- [lint-staged](https://github.com/okonet/lint-staged)
-- [husky](https://github.com/typicode/husky)
-- [commitlint](https://github.com/conventional-changelog/commitlint)
-- [commitizen (cz-cli and cz-conventional-changelog)](https://github.com/commitizen/cz-cli)
-- [cross-env](https://www.npmjs.com/package/cross-env)
-- [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
-- [styled-components](https://styled-components.com/)
-- [react-router-dom](https://reactrouter.com/)
-
-It offers an opinionated structure to get started with ease. Tests are performed on every commit after the linting stage successfully finishes. Finally, your offered with a README template that makes it easy to document your project. Have fun!
+Overall, creating a project with `create-synxty-app` is as easy as create-react-app or create-next-app but it sets you and your team ready to develop with a much better experience.
 
 ## 🎨 Creating a Project
 
-Start by creating a repository for your project:
+Using npx, run the following command:
 
-`git init my-app`
+`npx create-synxty-app my-app`
 
-Then run the following command:
+or, using yarn:
 
-`yarn create react-app my-app --template @synxty/react-template`
+`yarn create synxty-app my-app`
 
-or, using npx:
-
-`npx create-react-app my-app --template @synxty/react-template`
+**Note:** Since you're probably going to run this commands in a full stack application, if you don't specify the name of the project it defaults to `web`.
 
 And that's it!
 
-## 📁 File Structure
+## 📁 Folder Structure
 
-After one of the commands above finishes, a new directory is created with the name `my-app` in this case. And this is the structure that you get inside your project:
+After the installation completes, a new directory is created with the name of your app. This is the structure that you get inside your project:
 
 ```.
 my-app/
@@ -60,87 +56,68 @@ my-app/
 ├── node_modules/
 ├── package.json
 ├── .gitignore
-├── .eslinttc.json
+├── .eslintrc.json
+├── .eslintignore
 ├── tsconfig.json
 ├── commitlint.config.js
+├── .babelrc
+├── setupTests.js
+├── jest.config.js
+├── next-env.d.ts
+├── next.config.js
+├── .prettierrc
+├── .github/
+│   └── assets/
+│       └── banner.png
 ├── public/
 │   ├── favicon.ico
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── robots.txt
+│   └── synxty.svg
 └── src/
-    ├── App/
-    |   |-- App.tsx
-    ├── assets/
-    ├── components/
     ├── pages/
-    ├── routes/
-    ├── services/
-    ├── styles/
-    |   |-- index.js
-    └── index.tsx
+    │   ├── Home/
+    │   │    ├── index.tsx
+    │   │    ├── index.spec.tsx
+    │   │    └── styles.ts
+    │   ├── _app.tsx
+    │   ├── _document.tsx
+    │   └── index.tsx
+    └── styles/
+        └── global.ts
 
 ```
 
 ## ▶️ Available Scripts Within the Created Project
 
-`yarn start` or `npm start`
+`npm run dev` or `yarn dev`
 
-Runs the app in the development mode.
-
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
-
+Runs the app in development mode.  
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.  
+The page will reload if you make edits.  
 You will also see any lint errors in the console.
 
 ___
-`yarn test` or `npm test`
+`npm run test` or `yarn test`
 
-Launches the test runner in the interactive watch mode.
-
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner.  
 
 ___
-`yarn build` or `npm run build`
+`npm run build` or `yarn build`
 
-Builds the app for production to the `build` folder.
-
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
+Builds the app for production to the `build` folder.  
+It correctly bundles React in production mode and optimizes the build for the best performance.  
 The build is minified and the filenames include the hashes.
-
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 ___
-`yarn eject` or `npm run eject`
+`npm start` or `yarn start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Runs the app in production.
+___
 
 ## 🧠 Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To learn React, check out the [React documentation](https://reactjs.org/).  
+To learn Next.js, check out the [Next.js documentation](https://nextjs.org/docs/getting-started).
+To learn styled-components, checkout the [styled-components documentation](https://styled-components.com/docs).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-## ⚠ Notes
-
-- In your first commit, be sure that you are also committing the `.eslintrc.json`. Also, if you decide to make changes to this file commit those changes **before** you commit any changes to the src directory.
-
-- Changes to the default Airbnb code style to fit this template:
-  - import extensions were removed from ts and tsx files.
-  - tsx was added as a jsx-filename-extension.
-  - prop-types were disabled but feel free to enabled them by removing that option in the `.eslintrc.json` file.
 
 ## ⚖️ License
 
