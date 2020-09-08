@@ -54,7 +54,7 @@ async function createProject(project: IProjectProps) {
   -> ${chalk.cyan('styled-components')}
 `);
 
-  await installDependencies(dependencies, project.packageManager, isOnline);
+  //await installDependencies(dependencies, project.packageManager, isOnline);
 
   await copyTemplate(root);
 
