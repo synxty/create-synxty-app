@@ -9,17 +9,18 @@
 <!-- omit in toc -->
 ### Table of Contents
 
-- [📜 About](#-about)
+- [📃 About](#-about)
 - [🛠️ Requirements](#️-requirements)
 - [⚙️ Install](#️-install)
 - [▶️ Run](#️-run)
-- [💻 Tools and Technologies](#-tools-and-technologies)
+- [🚀 Tools and Technologies](#-tools-and-technologies)
+- [⚖️ License](#️-license)
 
-### 📜 About
+## 📃 About
 
 Tell me more about your project, why are you developing it? What problem does it solve?
 
-### 🛠️ Requirements
+## 🛠️ Requirements
 
 What do I need to install and run this app?
 
@@ -27,16 +28,15 @@ What do I need to install and run this app?
 - [Node.js](https://nodejs.org/en/)
 - ...
 
-
-### ⚙️ Install
+## ⚙️ Install
 
 How do I install it?
 
-### ▶️ Run
+## ▶️ Run
 
 How do I run it?
 
-### 💻 Tools and Technologies
+## 🚀 Tools and Technologies
 
 What tools and technologies are you using?
 
@@ -45,5 +45,14 @@ What tools and technologies are you using?
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
 - [Node.js](https://nodejs.org/en/)
-- [Synxty CRA Template](https://www.npmjs.com/package/@synxty/cra-template-react-template)
+- **[create-synxty-app]**(https://www.npmjs.com/package/create-synxty-app)
 - [styled-components](https://styled-components.com/)
+- [Next.js](https://nextjs.org/)
+
+## ⚖️ License
+
+Don't forget to protect your work with a License. [Learn more](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository)
+
+___
+
+Thank you, made with 💗 by [Synxty](https://github.com/synxty).

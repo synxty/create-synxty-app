@@ -34,7 +34,7 @@ Overall, creating a project with `create-synxty-app` is as easy as create-react-
 
 ## 🎨 Creating a Project
 
-Using npx, run the following command:
+Using npm, run the following command:
 
 `npx create-synxty-app my-app`
 
@@ -94,12 +94,10 @@ Runs the app in development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.  
 The page will reload if you make edits.  
 You will also see any lint errors in the console.
-
 ___
 `npm run test` or `yarn test`
 
 Launches the test runner.  
-
 ___
 `npm run build` or `yarn build`
 
@@ -115,14 +113,12 @@ ___
 ## 🧠 Learn More
 
 To learn React, check out the [React documentation](https://reactjs.org/).  
-To learn Next.js, check out the [Next.js documentation](https://nextjs.org/docs/getting-started).
+To learn Next.js, check out the [Next.js documentation](https://nextjs.org/docs/getting-started).  
 To learn styled-components, checkout the [styled-components documentation](https://styled-components.com/docs).
-
 
 ## ⚖️ License
 
 This template is open source software [licensed as MIT](LICENSE).
-
 ___
 
 Thank you, made with 💗 by [Synxty](https://github.com/synxty).

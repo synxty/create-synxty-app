@@ -1,9 +1,9 @@
 {
   "name": "create-synxty-app",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "Synxty",
   "license": "MIT",
-  "description": "Create a Synxty App",
+  "description": "Synxty App - Start your projects like a pro",
   "repository": {
     "type": "git",
     "url": "https://github.com/synxty/create-synxty-app.git"
