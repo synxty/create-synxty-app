@@ -8,12 +8,15 @@ import determinePackageManagerUsed from './determinePackageManagerUsed';
 import createProject, { IProjectProps } from './createProject';
 import { isGitInstalled } from './gitManager';
 
-const { _: projectArgs } = Yargs.check((argv) => {
+const argv = Yargs.check((argv) => {
   if (argv._.length > 1) {
     throw new Error("Only 0 or 1 files may be passed.");
   }
   return true;
 }).argv;
+
+const projectArgs = argv._;
+const useNpm = argv['use-npm'] ? true : false;
 
 async function run() {
   const projectName = validateProjectName(projectArgs[0] ? projectArgs[0].trim() : 'web');
@@ -29,7 +32,7 @@ async function run() {
   const projectProps: IProjectProps = {
     name: projectName.value,
     path: path.resolve(projectName.value),
-    packageManager: determinePackageManagerUsed(),
+    packageManager: useNpm ? 'npm' : determinePackageManagerUsed(),
     git: isGitInstalled()
   };
   await createProject(projectProps);
