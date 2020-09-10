@@ -6,7 +6,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": false,
     "strict": true,
-    "rootDir": "src"
   },
   "exclude": [
     "node_modules",

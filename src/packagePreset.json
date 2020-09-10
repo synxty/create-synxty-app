@@ -1,7 +1,7 @@
 {
   "version": "0.0.1",
   "scripts": {
-    "dev": "next dev",
+    "dev": "open-cli http://localhost:3000 && next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest"
