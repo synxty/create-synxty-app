@@ -9,9 +9,9 @@
     "url": "https://github.com/synxty/create-synxty-app.git"
   },
   "scripts": {
-    "dev": "ncc build src/index.ts -w -o ./dist/",
+    "dev": "rm -rf dist && ncc build ./index.ts -w -o ./dist/",
     "prerelease": "rm -rf ./dist/",
-    "release": "ncc build src/index.ts -o ./dist/ -m -C --no-source-map-register",
+    "release": "ncc build ./index.ts -o ./dist/ -m -C --no-source-map-register",
     "prepare": "yarn release"
   },
   "bin": {

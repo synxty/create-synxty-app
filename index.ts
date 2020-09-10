@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 import Yargs, { command } from 'yargs';
-import validateProjectName from './validateProjectName';
+import validateProjectName from './src/validateProjectName';
 import chalk from 'chalk';
 import path from 'path';
-import determinePackageManagerUsed from './determinePackageManagerUsed';
-import createProject, { IProjectProps } from './createProject';
-import { isGitInstalled } from './gitManager';
+import determinePackageManagerUsed from './src/determinePackageManagerUsed';
+import createProject, { IProjectProps } from './src/createProject';
+import { isGitInstalled } from './src/gitManager';
 import checkForUpdate from 'update-check';
-import packageJson from '../package.json';
+import packageJson from './package.json';
 
 const argv = Yargs.check((argv) => {
   if (argv._.length > 1) {

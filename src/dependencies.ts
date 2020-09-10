@@ -29,7 +29,8 @@ const devDependencies = [
   'eslint-plugin-standard@>=4.0.0',
   'jest',
   'prettier',
-  'typescript'
+  'typescript',
+  'open-cli'
 ];
 
 const ciDependencies = [
