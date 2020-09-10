@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
-import Yargs from 'yargs';
+import Yargs, { command } from 'yargs';
 import validateProjectName from './validateProjectName';
 import chalk from 'chalk';
 import path from 'path';
 import determinePackageManagerUsed from './determinePackageManagerUsed';
 import createProject, { IProjectProps } from './createProject';
 import { isGitInstalled } from './gitManager';
+import checkForUpdate from 'update-check';
+import packageJson from '../package.json';
 
 const argv = Yargs.check((argv) => {
   if (argv._.length > 1) {
@@ -17,6 +19,7 @@ const argv = Yargs.check((argv) => {
 
 const projectArgs = argv._;
 const useNpm = argv['use-npm'] ? true : false;
+const packageManager = useNpm ? 'npm' : determinePackageManagerUsed();
 
 async function run() {
   const projectName = validateProjectName(projectArgs[0] ? projectArgs[0].trim() : 'web');
@@ -32,10 +35,46 @@ async function run() {
   const projectProps: IProjectProps = {
     name: projectName.value,
     path: path.resolve(projectName.value),
-    packageManager: useNpm ? 'npm' : determinePackageManagerUsed(),
+    packageManager,
     git: isGitInstalled()
   };
-  await createProject(projectProps);
+
+  try {
+    await createProject(projectProps);
+  } catch (reason) {
+    throw reason;
+  }
+
 }
 
-run();
+const update = checkForUpdate(packageJson).catch(() => null);
+
+async function notifyUpdate() {
+  try {
+    const res = await update;
+    if (res?.latest) {
+      console.log(chalk.yellow.bold('A new version of `create-synxty-app` is available!'));
+      console.log(`
+        Consider to update to the latest version by running\ ${
+        packageManager === 'yarn'
+          ? 'yarn global add create-synxty-app'
+          : 'npm i -g create-synxty-app'
+        }
+      \n`);
+    }
+
+  } catch { }
+}
+
+run().then(notifyUpdate).catch(
+  async (reason) => {
+    console.log('Aborting installation.');
+    if (reason.command) {
+      console.log(`    ${chalk.cyan(reason.command)} has failed.\n`);
+    } else {
+      console.log(`    ${chalk.red(`Unexpected error. Please report it as a bug:\n ${reason}`)}\n`);
+    };
+    await notifyUpdate();
+    process.exit(1);
+  }
+);
