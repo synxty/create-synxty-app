@@ -1,6 +1,6 @@
 {
   "name": "create-synxty-app",
-  "version": "0.1.6",
+  "version": "0.2.13",
   "author": "Synxty",
   "license": "MIT",
   "description": "Synxty App - Start your projects like a pro",
@@ -10,9 +10,7 @@
   },
   "scripts": {
     "dev": "rm -rf dist && ncc build ./index.ts -w -o ./dist/",
-    "prerelease": "rm -rf ./dist/",
-    "release": "ncc build ./index.ts -o ./dist/ -m -C --no-source-map-register",
-    "prepare": "yarn release"
+    "build": "rm -rf dist && ncc build ./index.ts -o ./dist/ -m -C --no-source-map-register"
   },
   "bin": {
     "create-synxty-app": "./dist/index.js"
