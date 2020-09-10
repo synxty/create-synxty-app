@@ -73,11 +73,12 @@ my-app/
 │   ├── favicon.ico
 │   └── synxty.svg
 └── src/
-    ├── pages/
+    ├── layouts/
     │   ├── Home/
     │   │    ├── index.tsx
     │   │    ├── index.spec.tsx
     │   │    └── styles.ts
+    ├── pages/
     │   ├── _app.tsx
     │   ├── _document.tsx
     │   └── index.tsx
