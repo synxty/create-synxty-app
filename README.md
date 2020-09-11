@@ -1,7 +1,7 @@
 <!-- omit in toc -->
 # Create a Synxty App
 
-<img src="https://raw.githubusercontent.com/synxty/cra-template-synxty/master/.github/assets/banner.png" />
+<img src=".github/assets/banner.png" />
 
 <!-- omit in toc -->
 ## Start your projects like a pro
